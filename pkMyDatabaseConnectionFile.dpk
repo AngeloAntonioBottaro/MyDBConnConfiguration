@@ -31,6 +31,10 @@ requires
   rtl;
 
 contains
-  MyDataBaseConnectionFile in 'src\MyDataBaseConnectionFile.pas';
+  MyDatabaseConnectionFile in 'src\MyDatabaseConnectionFile.pas',
+  MyDatabaseConnectionFile.View.SelecionarConexao in 'src\MyDatabaseConnectionFile.View.SelecionarConexao.pas' {ViewSelecionarConexao},
+  MyDatabaseConnectionFile.Consts in 'src\MyDatabaseConnectionFile.Consts.pas',
+  MyDataBaseConnectionFile.View.Lista in 'src\MyDataBaseConnectionFile.View.Lista.pas' {ViewLista},
+  MyDataBaseConnectionFile.View.Manutencao in 'src\MyDataBaseConnectionFile.View.Manutencao.pas' {ViewManutencao};
 
 end.

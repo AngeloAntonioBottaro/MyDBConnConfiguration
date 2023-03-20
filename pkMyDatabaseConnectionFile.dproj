@@ -3,7 +3,7 @@
         <ProjectGuid>{D6CC3ED7-DE1B-4A40-A6FB-8406CCFD4AA0}</ProjectGuid>
         <MainSource>pkMyDatabaseConnectionFile.dpk</MainSource>
         <ProjectVersion>18.8</ProjectVersion>
-        <FrameworkType>None</FrameworkType>
+        <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -54,7 +54,7 @@
         <DCC_K>false</DCC_K>
         <GenDll>true</GenDll>
         <GenPackage>true</GenPackage>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <SanitizedProjectName>pkMyDatabaseConnectionFile</SanitizedProjectName>
         <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -100,7 +100,20 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="src\MyDataBaseConnectionFile.pas"/>
+        <DCCReference Include="src\MyDatabaseConnectionFile.pas"/>
+        <DCCReference Include="src\MyDatabaseConnectionFile.View.SelecionarConexao.pas">
+            <Form>ViewSelecionarConexao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\MyDatabaseConnectionFile.Consts.pas"/>
+        <DCCReference Include="src\MyDataBaseConnectionFile.View.Lista.pas">
+            <Form>ViewLista</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\MyDataBaseConnectionFile.View.Manutencao.pas">
+            <Form>ViewManutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
