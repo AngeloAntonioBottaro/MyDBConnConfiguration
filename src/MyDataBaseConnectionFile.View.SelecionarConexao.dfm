@@ -12,7 +12,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -166,14 +165,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
     end
   end
   object TBT_Host: TClientDataSet
-    PersistDataPacket.Data = {
-      BB0000009619E0BD010000001800000006000000000003000000BB0007536563
-      74696F6E010049000000010005574944544802000200500004486F7374010049
-      0000000100055749445448020002003200044E616D6501004900000001000557
-      4944544802000200140008446174616261736501004900000001000557494454
-      480200020014000850617373776F726401004900000001000557494454480200
-      0200140004506F727401004900000001000557494454480200020005000000}
-    Active = True
     Aggregates = <>
     Params = <>
     Left = 24
@@ -191,13 +182,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
     end
     object TBT_HostDatabase: TStringField
       FieldName = 'Database'
-    end
-    object TBT_HostPassword: TStringField
-      FieldName = 'Password'
-    end
-    object TBT_HostPort: TStringField
-      FieldName = 'Port'
-      Size = 5
     end
   end
   object DS_TBT_Host: TDataSource

@@ -35,6 +35,7 @@ contains
   MyDatabaseConnectionFile.View.SelecionarConexao in 'src\MyDatabaseConnectionFile.View.SelecionarConexao.pas' {ViewSelecionarConexao},
   MyDatabaseConnectionFile.Consts in 'src\MyDatabaseConnectionFile.Consts.pas',
   MyDataBaseConnectionFile.View.Lista in 'src\MyDataBaseConnectionFile.View.Lista.pas' {ViewLista},
-  MyDataBaseConnectionFile.View.Manutencao in 'src\MyDataBaseConnectionFile.View.Manutencao.pas' {ViewManutencao};
+  MyDataBaseConnectionFile.View.Manutencao in 'src\MyDataBaseConnectionFile.View.Manutencao.pas' {ViewManutencao},
+  MyDatabaseConnectionFile.Ini in 'src\MyDatabaseConnectionFile.Ini.pas';
 
 end.
