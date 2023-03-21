@@ -24,7 +24,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 515
     DesignSize = (
       519
       128)
@@ -49,6 +48,7 @@ object ViewSelecionarConexao: TViewSelecionarConexao
       Cursor = crHandPoint
       Hint = 'Lista de conex'#245'es'
       Anchors = [akTop, akRight]
+      Center = True
       ParentShowHint = False
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000300000
@@ -623,7 +623,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
       ParentFont = False
       TabOrder = 0
       StyleElements = []
-      ExplicitWidth = 488
     end
   end
   object pnButtons: TPanel
@@ -637,7 +636,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
     Padding.Right = 5
     Padding.Bottom = 5
     TabOrder = 1
-    ExplicitWidth = 515
     object btnCancelar: TButton
       Left = 438
       Top = 6
@@ -647,7 +645,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
       Caption = 'Cancelar'
       TabOrder = 0
       OnClick = btnCancelarClick
-      ExplicitLeft = 434
     end
     object btnSelecionar: TButton
       Left = 363
@@ -658,7 +655,6 @@ object ViewSelecionarConexao: TViewSelecionarConexao
       Caption = 'Selecionar'
       TabOrder = 1
       OnClick = btnSelecionarClick
-      ExplicitLeft = 359
     end
   end
   object TBT_Host: TClientDataSet

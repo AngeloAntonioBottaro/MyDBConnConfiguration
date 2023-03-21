@@ -14,6 +14,8 @@ const
   DEFAULT_PASSWORD    = 'masterkey';
   IDENTIFIER_PORT     = 'PORT';
   DEFAULT_PORT        = '3050';
+  IDENTIFIER_USERNAME = 'USERNAME';
+  DEFAULT_USERNAME    = 'sysdba';
 
 implementation
 

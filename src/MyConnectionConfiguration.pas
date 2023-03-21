@@ -16,9 +16,11 @@ type
     FHost: string;
     FDatabase: string;
     FPassword: string;
-    FPort: STRING;
+    FPort: string;
+    FUsername: string;
     FCancel: Boolean;
     function GetSelectedSection: string;
+    procedure UpdateNewIni;
   public
     constructor Create;
     destructor Destroy; override;
@@ -27,7 +29,8 @@ type
     property Host: string read FHost write FHost;
     property Database: string read FDatabase write FDatabase;
     property Password: string read FPassword write FPassword;
-    property Port: STRING read FPort write FPort;
+    property Port: string read FPort write FPort;
+    property Username: string read FUsername write FUsername;
     property Cancel: Boolean read FCancel write FCancel;
   end;
 
@@ -37,18 +40,35 @@ uses
   MyExceptions,
   MyConnectionConfiguration.Consts,
   MyConnectionConfiguration.View.SelecionarConexao,
-  MyConnectionConfiguration.View.Lista;
+  MyConnectionConfiguration.View.Lista, MyConnectionConfiguration.View.Manutencao;
 
 constructor TMyConnectionConfiguration.Create;
 begin
    FCancel  := False;
    FIniFile := TMyConnectionConfigurationIni.Create;
+   Self.UpdateNewIni;
 end;
 
 destructor TMyConnectionConfiguration.Destroy;
 begin
    FIniFile.Free;
    inherited;
+end;
+
+procedure TMyConnectionConfiguration.UpdateNewIni;
+begin
+   if(not FIniFile.NewIni)then
+     Exit;
+
+   if(ViewManutencao = nil)then Application.CreateForm(TViewManutencao, ViewManutencao);
+   try
+     ViewManutencao.ShowModal;
+   finally
+     FreeAndNil(ViewManutencao);
+   end;
+
+   if(FIniFile.NewIni)then
+     FIniFile.CreateNewConfigurationFile;
 end;
 
 function TMyConnectionConfiguration.LoadConfiguration: TMyConnectionConfiguration;
@@ -68,6 +88,7 @@ begin
      FDatabase := FIniFile.ReadDatabasePathName(LSection);
      FPassword := FIniFile.ReadPassword(LSection);
      FPort     := FIniFile.ReadPort(LSection);
+     FUsername := FIniFile.ReadUsername(LSection);
    except on E: Exception do
      raise ExceptionInformation.Create('Não foi possível acessar as informações da configuração selecionada.' + sLineBreak +
                                        'Mensagem: ' + E.Message);
