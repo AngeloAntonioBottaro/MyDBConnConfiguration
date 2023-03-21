@@ -1,4 +1,4 @@
-unit MyDataBaseConnectionFile.View.Manutencao;
+unit MyConnectionConfiguration.View.Manutencao;
 
 interface
 
@@ -15,6 +15,7 @@ uses
 
 type
   TViewManutencao = class(TForm)
+    procedure FormCreate(Sender: TObject);
   private
   public
   end;
@@ -25,5 +26,13 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+  Utils.MyFormLibrary;
+
+procedure TViewManutencao.FormCreate(Sender: TObject);
+begin
+   TMyFormLibrary.New.ConfForm(Self);
+end;
 
 end.

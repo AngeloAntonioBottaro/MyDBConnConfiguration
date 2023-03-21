@@ -1,4 +1,4 @@
-unit MyDataBaseConnectionFile.View.SelecionarConexao;
+unit MyConnectionConfiguration.View.SelecionarConexao;
 
 interface
 
@@ -17,8 +17,7 @@ uses
   Datasnap.DBClient,
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
-  Vcl.Imaging.pngimage,
-  MyDatabaseConnectionFile.Ini;
+  Vcl.Imaging.pngimage;
 
 type
   TViewSelecionarConexao = class(TForm)
@@ -39,6 +38,7 @@ type
     procedure btnSelecionarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure imgConfClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     FSelectedSection: string;    
     procedure LoadConfigurations;
@@ -55,8 +55,20 @@ implementation
 {$R *.dfm}
 
 uses
-  MyDatabaseConnectionFile.Consts,
-  MyDataBaseConnectionFile.View.Lista;
+  Utils.MyFormLibrary,
+  MyConnectionConfiguration.Consts,
+  MyConnectionConfiguration.Ini,
+  MyConnectionConfiguration.View.Lista;
+
+procedure TViewSelecionarConexao.FormCreate(Sender: TObject);
+begin
+   TMyFormLibrary.New.ConfForm(Self);
+end;
+
+procedure TViewSelecionarConexao.FormShow(Sender: TObject);
+begin
+   Self.LoadConfigurations;
+end;
 
 procedure TViewSelecionarConexao.btnCancelarClick(Sender: TObject);
 begin
@@ -69,21 +81,6 @@ begin
    FSelectedSection := DBLookupComboBox1.KeyValue;
    Self.Close;
    ModalResult := mrOk;
-end;
-
-procedure TViewSelecionarConexao.ClearClientDataSet;
-begin
-   TBT_Host.Close;
-   TBT_Host.CreateDataSet;      
-   TBT_Host.Open;
-   TBT_Host.EmptyDataSet;
-   TBT_Host.Close;
-   TBT_Host.Open;
-end;
-
-procedure TViewSelecionarConexao.FormShow(Sender: TObject);
-begin
-   Self.LoadConfigurations;
 end;
 
 procedure TViewSelecionarConexao.imgConfClick(Sender: TObject);
@@ -99,13 +96,13 @@ end;
 
 procedure TViewSelecionarConexao.LoadConfigurations;
 var                
-  LIniFile: TMyDatabaseConnectionFileIni;
+  LIniFile: TMyConnectionConfigurationIni;
   I: Integer;
   LSection: string;
 begin                     
    Self.ClearClientDataSet;
 
-   LIniFile := TMyDatabaseConnectionFileIni.Create;
+   LIniFile := TMyConnectionConfigurationIni.Create;
    try
      LIniFile.ReadSections;
      for I := 0 to Pred(LIniFile.GetSections.Count) do
@@ -124,6 +121,16 @@ begin
    end; 
 
    DBLookupComboBox1.ListFieldIndex := 0;  
+end;
+
+procedure TViewSelecionarConexao.ClearClientDataSet;
+begin
+   TBT_Host.Close;
+   TBT_Host.CreateDataSet;
+   TBT_Host.Open;
+   TBT_Host.EmptyDataSet;
+   TBT_Host.Close;
+   TBT_Host.Open;
 end;
 
 end.

@@ -1,4 +1,4 @@
-unit MyDataBaseConnectionFile.View.Lista;
+unit MyConnectionConfiguration.View.Lista;
 
 interface
 
@@ -15,6 +15,7 @@ uses
 
 type
   TViewLista = class(TForm)
+    procedure FormCreate(Sender: TObject);
   private
   public
   end;
@@ -25,5 +26,13 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+  Utils.MyFormLibrary;
+
+procedure TViewLista.FormCreate(Sender: TObject);
+begin
+   TMyFormLibrary.New.ConfForm(Self);
+end;
 
 end.

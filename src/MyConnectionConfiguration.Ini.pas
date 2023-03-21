@@ -1,4 +1,4 @@
-unit MyDatabaseConnectionFile.Ini;
+unit MyConnectionConfiguration.Ini;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Utils.MyIniLibrary;
 
 type
-  TMyDatabaseConnectionFileIni = class
+  TMyConnectionConfigurationIni = class
   private
     FIniFile: IMyIniLibrary;
     FStrings: TStrings;
@@ -38,52 +38,55 @@ uses
   Utils.MyLibrary,
   Utils.Myconsts,
   Utils.MyVCLLibrary,
-  MyDatabaseConnectionFile.Consts;
+  MyConnectionConfiguration.Consts;
 
-constructor TMyDatabaseConnectionFileIni.Create;
+constructor TMyConnectionConfigurationIni.Create;
 begin
+   if(not FileExists(Self.IniFilePathName))then
+     Self.CreateNewConfigurationFile;
+
    FIniFile := TMyIniLibrary.New;
    FIniFile
     .Path(Self.IniPath)
     .Name(INI_NAME);
 end;
 
-function TMyDatabaseConnectionFileIni.GetIniInstance: IMyIniLibrary;
+function TMyConnectionConfigurationIni.GetIniInstance: IMyIniLibrary;
 begin
    Result := FIniFile;
 end;
 
-function TMyDatabaseConnectionFileIni.IniFilePathName: string;
+function TMyConnectionConfigurationIni.IniFilePathName: string;
 begin
    Result := IncludeTrailingPathDelimiter(Self.IniPath) + INI_NAME;
 end;
 
-function TMyDatabaseConnectionFileIni.IniPath: string;
+function TMyConnectionConfigurationIni.IniPath: string;
 begin
    Result := TMyVclLibrary.GetAppPath;
 end;
 
-function TMyDatabaseConnectionFileIni.ReadName(ASection: String): string;
+function TMyConnectionConfigurationIni.ReadName(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_NAME).ReadIniFileStr(DEFAULT_NAME);
 end;
 
-function TMyDatabaseConnectionFileIni.ReadHost(ASection: String): string;
+function TMyConnectionConfigurationIni.ReadHost(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_HOST).ReadIniFileStr(DEFAULT_HOST);
 end;
 
-function TMyDatabaseConnectionFileIni.ReadDatabase(ASection: String): string;
+function TMyConnectionConfigurationIni.ReadDatabase(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_DATABASE).ReadIniFileStr(DEFAULT_DATABASE);
 end;
 
-function TMyDatabaseConnectionFileIni.ReadDatabasePathName(ASection: string): string;
+function TMyConnectionConfigurationIni.ReadDatabasePathName(ASection: string): string;
 begin
    Result := Self.IniPath + FOULDER_DATABASE + Self.ReadDatabase(ASection);
 end;
 
-function TMyDatabaseConnectionFileIni.ReadPassword(ASection: String): string;
+function TMyConnectionConfigurationIni.ReadPassword(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_PASSWORD).ReadIniFileStr(DEFAULT_PASSWORD);
 
@@ -93,12 +96,12 @@ begin
    Result := TMyLibrary.Decrypt(Result);
 end;
 
-function TMyDatabaseConnectionFileIni.ReadPort(ASection: String): string;
+function TMyConnectionConfigurationIni.ReadPort(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_PORT).ReadIniFileStr(DEFAULT_PORT);
 end;
 
-procedure TMyDatabaseConnectionFileIni.ReadSections;
+procedure TMyConnectionConfigurationIni.ReadSections;
 begin
    if(Assigned(FStrings))then
      FStrings.Free;
@@ -107,7 +110,7 @@ begin
    FIniFile.ReadSections(FStrings);
 end;
 
-function TMyDatabaseConnectionFileIni.GetSections: TStrings;
+function TMyConnectionConfigurationIni.GetSections: TStrings;
 begin
    if(not Assigned(FStrings))then
      Self.ReadSections;
@@ -115,24 +118,24 @@ begin
    Result := FStrings;
 end;
 
-procedure TMyDatabaseConnectionFileIni.CreateNewConfigurationFile;
+procedure TMyConnectionConfigurationIni.CreateNewConfigurationFile;
 begin
    Self.CreateNewItem(DEFAULT_NAME, DEFAULT_HOST, DEFAULT_DATABASE, DEFAULT_PASSWORD, DEFAULT_PORT);
 end;
 
-procedure TMyDatabaseConnectionFileIni.CreateNewItem(AName, AHost, ADatabase, APassword, APort: String);
+procedure TMyConnectionConfigurationIni.CreateNewItem(AName, AHost, ADatabase, APassword, APort: String);
 begin
    Self.SaveItem(EmptyStr, AName, AHost, ADatabase, APassword, APort);
 end;
 
-destructor TMyDatabaseConnectionFileIni.Destroy;
+destructor TMyConnectionConfigurationIni.Destroy;
 begin
    if(Assigned(FStrings))then
      FStrings.Free;
    inherited;
 end;
 
-procedure TMyDatabaseConnectionFileIni.SaveItem(ASection, AName, AHost, ADatabase, APassword, APort: String);
+procedure TMyConnectionConfigurationIni.SaveItem(ASection, AName, AHost, ADatabase, APassword, APort: String);
 begin
    FIniFile
     .Section(ASection)

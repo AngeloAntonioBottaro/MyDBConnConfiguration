@@ -1,7 +1,7 @@
-object ViewManutencao: TViewManutencao
+object ViewLista: TViewLista
   Left = 0
   Top = 0
-  Caption = 'Manuten'#231#227'o de configura'#231#245'es'
+  Caption = 'Lista de configura'#231#245'es'
   ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
@@ -11,6 +11,7 @@ object ViewManutencao: TViewManutencao
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
 end

@@ -1,4 +1,4 @@
-program MyDatabaseConnectionFileDemo;
+program MyConnectionConfigurationDemo;
 
 uses
   Vcl.Forms,
