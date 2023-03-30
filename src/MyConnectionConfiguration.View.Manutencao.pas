@@ -55,6 +55,7 @@ implementation
 
 uses
   MyExceptions,
+  MyConnectionConfiguration.Consts,
   Utils.MyFormLibrary;
 
 procedure TViewManutencao.FormCreate(Sender: TObject);
@@ -85,6 +86,10 @@ end;
 
 procedure TViewManutencao.FormShow(Sender: TObject);
 begin
+   edtHost.Text     := DEFAULT_HOST;
+   edtUsername.Text := DEFAULT_USERNAME;
+   edtPort.Text     := DEFAULT_PORT;
+
    if(not FSectionAlterar.IsEmpty)then
      Self.FillFields;
 end;

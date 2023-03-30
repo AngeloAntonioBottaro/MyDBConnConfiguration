@@ -40,7 +40,8 @@ uses
   MyExceptions,
   MyConnectionConfiguration.Consts,
   MyConnectionConfiguration.View.SelecionarConexao,
-  MyConnectionConfiguration.View.Lista, MyConnectionConfiguration.View.Manutencao;
+  MyConnectionConfiguration.View.Lista,
+  MyConnectionConfiguration.View.Manutencao;
 
 constructor TMyConnectionConfiguration.Create;
 begin
