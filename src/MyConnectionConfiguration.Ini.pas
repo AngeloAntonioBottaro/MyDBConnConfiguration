@@ -54,7 +54,7 @@ end;
 
 class function TMyConnectionConfigurationIni.DatabaseFolder: string;
 begin
-   Result := Self.IniPath + FOLDER_DATABASE;
+   Result := TMyVclLibrary.GetAppPath + FOLDER_DATABASE;
 end;
 
 destructor TMyConnectionConfigurationIni.Destroy;
@@ -76,7 +76,10 @@ end;
 
 class function TMyConnectionConfigurationIni.IniPath: string;
 begin
-   Result := TMyVclLibrary.GetAppPath;
+   Result := IncludeTrailingPathDelimiter(TMyLibrary.GetPathAppDataLocal) + TMyVclLibrary.GetAppName;
+
+   if(not DirectoryExists(Result))then
+     ForceDirectories(Result);
 end;
 
 function TMyConnectionConfigurationIni.NewIni: Boolean;
