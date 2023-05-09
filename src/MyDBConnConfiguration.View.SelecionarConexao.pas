@@ -39,6 +39,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure imgConfClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     FSelectedSection: string;    
     procedure LoadConfigurations;
@@ -63,6 +64,15 @@ uses
 procedure TViewSelecionarConexao.FormCreate(Sender: TObject);
 begin
    TMyFormLibrary.New.ConfForm(Self);
+end;
+
+procedure TViewSelecionarConexao.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+   if(Key = #13)then
+   begin
+      Perform(CM_DialogKey, VK_TAB, 0);
+      Key := #0;
+   end;
 end;
 
 procedure TViewSelecionarConexao.FormShow(Sender: TObject);

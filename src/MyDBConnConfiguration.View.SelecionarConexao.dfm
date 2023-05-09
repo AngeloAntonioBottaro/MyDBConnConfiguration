@@ -10,9 +10,11 @@ object ViewSelecionarConexao: TViewSelecionarConexao
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
+  OnKeyPress = FormKeyPress
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -643,7 +645,7 @@ object ViewSelecionarConexao: TViewSelecionarConexao
       Height = 29
       Align = alRight
       Caption = 'Cancelar'
-      TabOrder = 0
+      TabOrder = 1
       OnClick = btnCancelarClick
     end
     object btnSelecionar: TButton
@@ -653,7 +655,7 @@ object ViewSelecionarConexao: TViewSelecionarConexao
       Height = 29
       Align = alRight
       Caption = 'Selecionar'
-      TabOrder = 1
+      TabOrder = 0
       OnClick = btnSelecionarClick
     end
   end

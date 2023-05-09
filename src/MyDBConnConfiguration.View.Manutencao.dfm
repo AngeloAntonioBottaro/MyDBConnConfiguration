@@ -29,7 +29,6 @@ object ViewManutencao: TViewManutencao
     Padding.Right = 3
     Padding.Bottom = 3
     TabOrder = 1
-    ExplicitWidth = 427
     object btnFechar: TButton
       Left = 350
       Top = 4
@@ -39,7 +38,6 @@ object ViewManutencao: TViewManutencao
       Caption = 'Fechar'
       TabOrder = 1
       OnClick = btnFecharClick
-      ExplicitLeft = 323
     end
     object btnGravar: TButton
       Tag = 1
@@ -51,7 +49,6 @@ object ViewManutencao: TViewManutencao
       Caption = 'Gravar'
       TabOrder = 0
       OnClick = btnGravarClick
-      ExplicitLeft = 223
     end
   end
   object pnTela: TPanel
@@ -62,7 +59,6 @@ object ViewManutencao: TViewManutencao
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 427
     object imgDatabase: TImage
       Left = 422
       Top = 64
