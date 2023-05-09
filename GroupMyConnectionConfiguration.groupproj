@@ -3,7 +3,7 @@
         <ProjectGuid>{8A57A74F-F093-4ACA-8596-45C38B0A0EE6}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="pkMyConnectionConfiguration.dproj">
+        <Projects Include="pkMyDBConnConfiguration.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Demo\MyConnectionConfigurationDemo.dproj">
@@ -17,14 +17,14 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="pkMyConnectionConfiguration">
-        <MSBuild Projects="pkMyConnectionConfiguration.dproj"/>
+    <Target Name="pkMyDBConnConfiguration">
+        <MSBuild Projects="pkMyDBConnConfiguration.dproj"/>
     </Target>
-    <Target Name="pkMyConnectionConfiguration:Clean">
-        <MSBuild Projects="pkMyConnectionConfiguration.dproj" Targets="Clean"/>
+    <Target Name="pkMyDBConnConfiguration:Clean">
+        <MSBuild Projects="pkMyDBConnConfiguration.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="pkMyConnectionConfiguration:Make">
-        <MSBuild Projects="pkMyConnectionConfiguration.dproj" Targets="Make"/>
+    <Target Name="pkMyDBConnConfiguration:Make">
+        <MSBuild Projects="pkMyDBConnConfiguration.dproj" Targets="Make"/>
     </Target>
     <Target Name="MyConnectionConfigurationDemo">
         <MSBuild Projects="Demo\MyConnectionConfigurationDemo.dproj"/>
@@ -36,13 +36,13 @@
         <MSBuild Projects="Demo\MyConnectionConfigurationDemo.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="pkMyConnectionConfiguration;MyConnectionConfigurationDemo"/>
+        <CallTarget Targets="pkMyDBConnConfiguration;MyConnectionConfigurationDemo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="pkMyConnectionConfiguration:Clean;MyConnectionConfigurationDemo:Clean"/>
+        <CallTarget Targets="pkMyDBConnConfiguration:Clean;MyConnectionConfigurationDemo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="pkMyConnectionConfiguration:Make;MyConnectionConfigurationDemo:Make"/>
+        <CallTarget Targets="pkMyDBConnConfiguration:Make;MyConnectionConfigurationDemo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

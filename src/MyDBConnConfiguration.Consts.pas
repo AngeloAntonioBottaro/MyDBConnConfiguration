@@ -1,4 +1,4 @@
-unit MyConnectionConfiguration.Consts;
+unit MyDBConnConfiguration.Consts;
 
 interface
 

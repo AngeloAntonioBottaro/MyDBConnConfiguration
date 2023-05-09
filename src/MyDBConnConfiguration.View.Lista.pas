@@ -1,4 +1,4 @@
-unit MyConnectionConfiguration.View.Lista;
+unit MyDBConnConfiguration.View.Lista;
 
 interface
 
@@ -18,7 +18,7 @@ uses
   Vcl.ExtCtrls,
   Datasnap.DBClient,
   Vcl.StdCtrls,
-  MyConnectionConfiguration.Ini;
+  MyDBConnConfiguration.Ini;
 
 type
   TViewLista = class(TForm)
@@ -47,7 +47,7 @@ type
     procedure btnFecharClick(Sender: TObject);
     procedure btnExluirClick(Sender: TObject);
   private
-    FIniFile: TMyConnectionConfigurationIni;
+    FIniFile: TMyDBConnConfigurationIni;
     procedure ClearClientDataSet;
   public
   end;
@@ -63,13 +63,13 @@ uses
   MyExceptions,
   Common.Utils.MyFormLibrary,
   Common.Utils.MyConsts,
-  MyConnectionConfiguration.View.Manutencao;
+  MyDBConnConfiguration.View.Manutencao;
 
 procedure TViewLista.FormCreate(Sender: TObject);
 begin
    TMyFormLibrary.New.ConfForm(Self);
    Self.BorderIcons := [biSystemMenu];
-   FIniFile := TMyConnectionConfigurationIni.Create;
+   FIniFile := TMyDBConnConfigurationIni.Create;
 end;
 
 procedure TViewLista.FormDestroy(Sender: TObject);

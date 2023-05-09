@@ -1,4 +1,4 @@
-unit MyConnectionConfiguration;
+unit MyDBConnConfiguration;
 
 interface
 
@@ -7,12 +7,12 @@ uses
   System.Classes,
   Vcl.Forms,
   Vcl.Controls,
-  MyConnectionConfiguration.Ini;
+  MyDBConnConfiguration.Ini;
 
 type
-  TMyConnectionConfiguration = class
+  TMyDBConnConfiguration = class
   private
-    FIniFile: TMyConnectionConfigurationIni;
+    FIniFile: TMyDBConnConfigurationIni;
     FHost: string;
     FDatabase: string;
     FPassword: string;
@@ -24,7 +24,7 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-    function LoadConfiguration: TMyConnectionConfiguration;
+    function LoadConfiguration: TMyDBConnConfiguration;
     procedure ListConfigurations;
     property Host: string read FHost write FHost;
     property Database: string read FDatabase write FDatabase;
@@ -38,25 +38,25 @@ implementation
 
 uses
   MyExceptions,
-  MyConnectionConfiguration.Consts,
-  MyConnectionConfiguration.View.SelecionarConexao,
-  MyConnectionConfiguration.View.Lista,
-  MyConnectionConfiguration.View.Manutencao;
+  MyDBConnConfiguration.Consts,
+  MyDBConnConfiguration.View.SelecionarConexao,
+  MyDBConnConfiguration.View.Lista,
+  MyDBConnConfiguration.View.Manutencao;
 
-constructor TMyConnectionConfiguration.Create;
+constructor TMyDBConnConfiguration.Create;
 begin
    FCancel  := False;
-   FIniFile := TMyConnectionConfigurationIni.Create;
+   FIniFile := TMyDBConnConfigurationIni.Create;
    Self.UpdateNewIni;
 end;
 
-destructor TMyConnectionConfiguration.Destroy;
+destructor TMyDBConnConfiguration.Destroy;
 begin
    FIniFile.Free;
    inherited;
 end;
 
-procedure TMyConnectionConfiguration.UpdateNewIni;
+procedure TMyDBConnConfiguration.UpdateNewIni;
 begin
    if(not FIniFile.NewIni)then
      Exit;
@@ -72,7 +72,7 @@ begin
      FIniFile.CreateNewConfigurationFile;
 end;
 
-function TMyConnectionConfiguration.LoadConfiguration: TMyConnectionConfiguration;
+function TMyDBConnConfiguration.LoadConfiguration: TMyDBConnConfiguration;
 var
   LSection: string;
 begin
@@ -96,7 +96,7 @@ begin
    end;
 end;
 
-function TMyConnectionConfiguration.GetSelectedSection: string;
+function TMyDBConnConfiguration.GetSelectedSection: string;
 begin
    Result := EmptyStr;
 
@@ -115,7 +115,7 @@ begin
    end;
 end;
 
-procedure TMyConnectionConfiguration.ListConfigurations;
+procedure TMyDBConnConfiguration.ListConfigurations;
 begin
    if(ViewLista = nil)then Application.CreateForm(TViewLista, ViewLista);
    try

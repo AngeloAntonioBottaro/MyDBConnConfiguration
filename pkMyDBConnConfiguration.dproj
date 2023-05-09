@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{D6CC3ED7-DE1B-4A40-A6FB-8406CCFD4AA0}</ProjectGuid>
-        <MainSource>pkMyConnectionConfiguration.dpk</MainSource>
+        <MainSource>pkMyDBConnConfiguration.dpk</MainSource>
         <ProjectVersion>18.8</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
@@ -56,7 +56,7 @@
         <GenPackage>true</GenPackage>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <SanitizedProjectName>pkMyConnectionConfiguration</SanitizedProjectName>
+        <SanitizedProjectName>pkMyDBConnConfiguration</SanitizedProjectName>
         <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -100,21 +100,21 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="src\MyConnectionConfiguration.pas"/>
-        <DCCReference Include="src\MyConnectionConfiguration.View.SelecionarConexao.pas">
+        <DCCReference Include="src\MyDBConnConfiguration.pas"/>
+        <DCCReference Include="src\MyDBConnConfiguration.View.SelecionarConexao.pas">
             <Form>ViewSelecionarConexao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\MyConnectionConfiguration.Consts.pas"/>
-        <DCCReference Include="src\MyConnectionConfiguration.View.Lista.pas">
+        <DCCReference Include="src\MyDBConnConfiguration.Consts.pas"/>
+        <DCCReference Include="src\MyDBConnConfiguration.View.Lista.pas">
             <Form>ViewLista</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\MyConnectionConfiguration.View.Manutencao.pas">
+        <DCCReference Include="src\MyDBConnConfiguration.View.Manutencao.pas">
             <Form>ViewManutencao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\MyConnectionConfiguration.Ini.pas"/>
+        <DCCReference Include="src\MyDBConnConfiguration.Ini.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -133,7 +133,7 @@
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">pkMyConnectionConfiguration.dpk</Source>
+                    <Source Name="MainSource">pkMyDBConnConfiguration.dpk</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -156,9 +156,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\pkMyConnectionConfiguration.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\pkMyDBConnConfiguration.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>pkMyConnectionConfiguration.bpl</RemoteName>
+                        <RemoteName>pkMyDBConnConfiguration.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

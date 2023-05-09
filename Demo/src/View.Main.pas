@@ -30,13 +30,13 @@ implementation
 {$R *.dfm}
 
 uses
-  MyDatabaseConnectionFile;
+  MyDBConnConfiguration;
 
 procedure TViewMain.Button1Click(Sender: TObject);
 var
-  TDCF: TMyDataBaseConnectionFile;
+  TDCF: TMyDBConnConfiguration;
 begin
-   TDCF := TMyDataBaseConnectionFile.Create;
+   TDCF := TMyDBConnConfiguration.Create;
    try
      ShowMessage('Host: ' + TDCF.Host + sLineBreak +
                  'Password: ' + TDCF.Password + sLineBreak +

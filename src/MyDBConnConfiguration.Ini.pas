@@ -1,4 +1,4 @@
-unit MyConnectionConfiguration.Ini;
+unit MyDBConnConfiguration.Ini;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Common.Utils.MyIniLibrary;
 
 type
-  TMyConnectionConfigurationIni = class
+  TMyDBConnConfigurationIni = class
   private
     FIniFile: IMyIniLibrary;
     FStrings: TStrings;
@@ -42,9 +42,9 @@ uses
   Common.Utils.MyLibrary,
   Common.Utils.Myconsts,
   Common.Utils.MyVCLLibrary,
-  MyConnectionConfiguration.Consts;
+  MyDBConnConfiguration.Consts;
 
-constructor TMyConnectionConfigurationIni.Create;
+constructor TMyDBConnConfigurationIni.Create;
 begin
    FIniFile := TMyIniLibrary.New;
    FIniFile
@@ -52,29 +52,29 @@ begin
     .Name(INI_NAME);
 end;
 
-class function TMyConnectionConfigurationIni.DatabaseFolder: string;
+class function TMyDBConnConfigurationIni.DatabaseFolder: string;
 begin
    Result := TMyVclLibrary.GetAppPath + FOLDER_DATABASE;
 end;
 
-destructor TMyConnectionConfigurationIni.Destroy;
+destructor TMyDBConnConfigurationIni.Destroy;
 begin
    if(Assigned(FStrings))then
      FStrings.Free;
    inherited;
 end;
 
-function TMyConnectionConfigurationIni.GetIniInstance: IMyIniLibrary;
+function TMyDBConnConfigurationIni.GetIniInstance: IMyIniLibrary;
 begin
    Result := FIniFile;
 end;
 
-function TMyConnectionConfigurationIni.IniFilePathName: string;
+function TMyDBConnConfigurationIni.IniFilePathName: string;
 begin
    Result := IncludeTrailingPathDelimiter(Self.IniPath) + INI_NAME;
 end;
 
-class function TMyConnectionConfigurationIni.IniPath: string;
+class function TMyDBConnConfigurationIni.IniPath: string;
 begin
    Result := IncludeTrailingPathDelimiter(TMyLibrary.GetPathAppDataLocal) + TMyVclLibrary.GetAppName;
 
@@ -82,34 +82,34 @@ begin
      ForceDirectories(Result);
 end;
 
-function TMyConnectionConfigurationIni.NewIni: Boolean;
+function TMyDBConnConfigurationIni.NewIni: Boolean;
 begin
    Result := (not FileExists(Self.IniFilePathName));
 end;
 
-function TMyConnectionConfigurationIni.ReadName(ASection: String): string;
+function TMyDBConnConfigurationIni.ReadName(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_NAME).ReadIniFileStr(DEFAULT_NAME);
 end;
 
-function TMyConnectionConfigurationIni.ReadHost(ASection: String): string;
+function TMyDBConnConfigurationIni.ReadHost(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_HOST).ReadIniFileStr(DEFAULT_HOST);
    if(UpperCase(Result) = UpperCase(DEFAULT_HOST))then
      Result := '127.0.0.1';
 end;
 
-function TMyConnectionConfigurationIni.ReadDatabase(ASection: String): string;
+function TMyDBConnConfigurationIni.ReadDatabase(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_DATABASE).ReadIniFileStr(DEFAULT_DATABASE);
 end;
 
-function TMyConnectionConfigurationIni.ReadDatabasePathName(ASection: string): string;
+function TMyDBConnConfigurationIni.ReadDatabasePathName(ASection: string): string;
 begin
    Result := Self.DatabaseFolder + Self.ReadDatabase(ASection);
 end;
 
-function TMyConnectionConfigurationIni.ReadPassword(ASection: String): string;
+function TMyDBConnConfigurationIni.ReadPassword(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_PASSWORD).ReadIniFileStr(DEFAULT_PASSWORD);
 
@@ -119,17 +119,17 @@ begin
    Result := TMyLibrary.Decrypt(Result);
 end;
 
-function TMyConnectionConfigurationIni.ReadPort(ASection: String): string;
+function TMyDBConnConfigurationIni.ReadPort(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_PORT).ReadIniFileStr(DEFAULT_PORT);
 end;
 
-function TMyConnectionConfigurationIni.ReadUsername(ASection: String): string;
+function TMyDBConnConfigurationIni.ReadUsername(ASection: String): string;
 begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_USERNAME).ReadIniFileStr(DEFAULT_USERNAME);
 end;
 
-procedure TMyConnectionConfigurationIni.ReadSections;
+procedure TMyDBConnConfigurationIni.ReadSections;
 begin
    if(Assigned(FStrings))then
      FStrings.Free;
@@ -138,7 +138,7 @@ begin
    FIniFile.ReadSections(FStrings);
 end;
 
-function TMyConnectionConfigurationIni.GetSections: TStrings;
+function TMyDBConnConfigurationIni.GetSections: TStrings;
 begin
    if(not Assigned(FStrings))then
      Self.ReadSections;
@@ -146,17 +146,17 @@ begin
    Result := FStrings;
 end;
 
-procedure TMyConnectionConfigurationIni.CreateNewConfigurationFile;
+procedure TMyDBConnConfigurationIni.CreateNewConfigurationFile;
 begin
    Self.CreateNewItem(DEFAULT_NAME, DEFAULT_HOST, DEFAULT_DATABASE, DEFAULT_PASSWORD, DEFAULT_PORT, DEFAULT_USERNAME);
 end;
 
-procedure TMyConnectionConfigurationIni.CreateNewItem(AName, AHost, ADatabase, APassword, APort, AUsername: String);
+procedure TMyDBConnConfigurationIni.CreateNewItem(AName, AHost, ADatabase, APassword, APort, AUsername: String);
 begin
    Self.SaveItem(EmptyStr, AName, AHost, ADatabase, APassword, APort, AUsername);
 end;
 
-procedure TMyConnectionConfigurationIni.SaveItem(ASection, AName, AHost, ADatabase, APassword, APort, AUsername: String);
+procedure TMyDBConnConfigurationIni.SaveItem(ASection, AName, AHost, ADatabase, APassword, APort, AUsername: String);
 begin
    FIniFile
     .Section(ASection)

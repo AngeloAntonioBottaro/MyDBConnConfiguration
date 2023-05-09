@@ -1,4 +1,4 @@
-unit MyConnectionConfiguration.View.SelecionarConexao;
+unit MyDBConnConfiguration.View.SelecionarConexao;
 
 interface
 
@@ -56,9 +56,9 @@ implementation
 
 uses
   Common.Utils.MyFormLibrary,
-  MyConnectionConfiguration.Consts,
-  MyConnectionConfiguration.Ini,
-  MyConnectionConfiguration.View.Lista;
+  MyDBConnConfiguration.Consts,
+  MyDBConnConfiguration.Ini,
+  MyDBConnConfiguration.View.Lista;
 
 procedure TViewSelecionarConexao.FormCreate(Sender: TObject);
 begin
@@ -96,13 +96,13 @@ end;
 
 procedure TViewSelecionarConexao.LoadConfigurations;
 var                
-  LIniFile: TMyConnectionConfigurationIni;
+  LIniFile: TMyDBConnConfigurationIni;
   I: Integer;
   LSection: string;
-begin                     
+begin
    Self.ClearClientDataSet;
 
-   LIniFile := TMyConnectionConfigurationIni.Create;
+   LIniFile := TMyDBConnConfigurationIni.Create;
    try
      LIniFile.ReadSections;
      for I := 0 to Pred(LIniFile.GetSections.Count) do

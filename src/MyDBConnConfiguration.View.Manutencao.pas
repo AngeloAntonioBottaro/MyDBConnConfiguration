@@ -1,4 +1,4 @@
-unit MyConnectionConfiguration.View.Manutencao;
+unit MyDBConnConfiguration.View.Manutencao;
 
 interface
 
@@ -15,7 +15,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Imaging.pngimage,
-  MyConnectionConfiguration.Ini;
+  MyDBConnConfiguration.Ini;
 
 type
   TViewManutencao = class(TForm)
@@ -39,7 +39,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
   private
-    FIni: TMyConnectionConfigurationIni;
+    FIni: TMyDBConnConfigurationIni;
     FSectionAlterar: string;
     procedure FillFields;
   public
@@ -55,14 +55,14 @@ implementation
 
 uses
   MyExceptions,
-  MyConnectionConfiguration.Consts,
+  MyDBConnConfiguration.Consts,
   Common.Utils.MyFormLibrary;
 
 procedure TViewManutencao.FormCreate(Sender: TObject);
 begin
    TMyFormLibrary.New.ConfForm(Self);
    FSectionAlterar := EmptyStr;
-   FIni := TMyConnectionConfigurationIni.Create;
+   FIni := TMyDBConnConfigurationIni.Create;
 end;
 
 procedure TViewManutencao.FormDestroy(Sender: TObject);
@@ -102,7 +102,7 @@ begin
    vDialog := TFileOpenDialog.Create(nil);
    try
      vDialog.Title := 'Selecione o banco de dados';
-     vDialog.DefaultFolder := TMyConnectionConfigurationIni.DatabaseFolder;
+     vDialog.DefaultFolder := TMyDBConnConfigurationIni.DatabaseFolder;
      if(vDialog.Execute())then
        edtDatabase.Text := ExtractFileName(vDialog.FileName);
    finally
