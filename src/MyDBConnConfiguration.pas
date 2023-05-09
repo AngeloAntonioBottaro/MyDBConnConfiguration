@@ -14,6 +14,7 @@ type
   private
     FIniFile: TMyDBConnConfigurationIni;
     FHost: string;
+    FDBPath: string;
     FDatabase: string;
     FPassword: string;
     FPort: string;
@@ -21,13 +22,14 @@ type
     FCancel: Boolean;
     function GetSelectedSection: string;
     procedure UpdateNewIni;
+    function GetDatabase: string;
   public
     constructor Create;
     destructor Destroy; override;
     function LoadConfiguration: TMyDBConnConfiguration;
     procedure ListConfigurations;
     property Host: string read FHost write FHost;
-    property Database: string read FDatabase write FDatabase;
+    property Database: string read GetDatabase write FDatabase;
     property Password: string read FPassword write FPassword;
     property Port: string read FPort write FPort;
     property Username: string read FUsername write FUsername;
@@ -86,7 +88,8 @@ begin
 
    try
      FHost     := FIniFile.ReadHost(LSection);
-     FDatabase := FIniFile.ReadDatabasePathName(LSection);
+     FDBPath   := FIniFile.ReadDBPath(LSection);
+     FDatabase := FIniFile.ReadDatabase(LSection);
      FPassword := FIniFile.ReadPassword(LSection);
      FPort     := FIniFile.ReadPort(LSection);
      FUsername := FIniFile.ReadUsername(LSection);
@@ -94,6 +97,11 @@ begin
      raise ExceptionInformation.Create('Não foi possível acessar as informações da configuração selecionada.' + sLineBreak +
                                        'Mensagem: ' + E.Message);
    end;
+end;
+
+function TMyDBConnConfiguration.GetDatabase: string;
+begin
+   Result := FDBPath + FDatabase;
 end;
 
 function TMyDBConnConfiguration.GetSelectedSection: string;

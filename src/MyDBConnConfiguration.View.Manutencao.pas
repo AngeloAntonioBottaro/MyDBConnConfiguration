@@ -30,6 +30,8 @@ type
     edtDatabase: TLabeledEdit;
     imgDatabase: TImage;
     edtPassword: TLabeledEdit;
+    imgVerSenha: TImage;
+    imgOcultarSenha: TImage;
     procedure FormCreate(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -38,6 +40,8 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
+    procedure imgVerSenhaClick(Sender: TObject);
+    procedure imgOcultarSenhaClick(Sender: TObject);
   private
     FIni: TMyDBConnConfigurationIni;
     FSectionAlterar: string;
@@ -89,6 +93,8 @@ begin
    edtHost.Text     := DEFAULT_HOST;
    edtUsername.Text := DEFAULT_USERNAME;
    edtPort.Text     := DEFAULT_PORT;
+   edtDatabase.Text := DEFAULT_DATABASE;
+   imgOcultarSenhaClick(nil);
 
    if(not FSectionAlterar.IsEmpty)then
      Self.FillFields;
@@ -96,18 +102,32 @@ end;
 
 procedure TViewManutencao.imgDatabaseClick(Sender: TObject);
 var
-  vDialog: TFileOpenDialog;
+  LDialog: TFileOpenDialog;
 begin
    edtDatabase.Text := EmptyStr;
-   vDialog := TFileOpenDialog.Create(nil);
+   LDialog := TFileOpenDialog.Create(nil);
    try
-     vDialog.Title := 'Selecione o banco de dados';
-     vDialog.DefaultFolder := TMyDBConnConfigurationIni.DatabaseFolder;
-     if(vDialog.Execute())then
-       edtDatabase.Text := ExtractFileName(vDialog.FileName);
+     LDialog.Title := 'Selecione o banco de dados';
+     LDialog.DefaultFolder := 'C:\';
+     if(LDialog.Execute())then
+       edtDatabase.Text := LDialog.FileName;
    finally
-     vDialog.DisposeOf;
+     LDialog.DisposeOf;
    end;
+end;
+
+procedure TViewManutencao.imgOcultarSenhaClick(Sender: TObject);
+begin
+   imgVerSenha.Visible      := True;
+   imgOcultarSenha.Visible  := False;
+   edtPassword.PasswordChar := Char('#');
+end;
+
+procedure TViewManutencao.imgVerSenhaClick(Sender: TObject);
+begin
+   imgVerSenha.Visible      := False;
+   imgOcultarSenha.Visible  := True;
+   edtPassword.PasswordChar := #0;
 end;
 
 procedure TViewManutencao.btnFecharClick(Sender: TObject);
@@ -151,7 +171,7 @@ procedure TViewManutencao.FillFields;
 begin
    edtName.Text     := FIni.ReadName(FSectionAlterar);
    edtHost.Text     := FIni.ReadHost(FSectionAlterar);
-   edtDatabase.Text := FIni.ReadDatabase(FSectionAlterar);
+   edtDatabase.Text := IncludeTrailingPathDelimiter(FIni.ReadDBPath(FSectionAlterar)) + FIni.ReadDatabase(FSectionAlterar);
    edtPassword.Text := FIni.ReadPassword(FSectionAlterar);
    edtPort.Text     := FIni.ReadPort(FSectionAlterar);
    edtUsername.Text := FIni.ReadUsername(FSectionAlterar);

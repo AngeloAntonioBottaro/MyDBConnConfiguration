@@ -16,7 +16,6 @@ type
     constructor Create;
     destructor Destroy; override;
     class function IniPath: string;
-    class function DatabaseFolder: string;
 
     function NewIni: Boolean;
     function GetIniInstance: IMyIniLibrary;
@@ -27,8 +26,8 @@ type
 
     function ReadName(ASection: String): string;
     function ReadHost(ASection: String): string;
+    function ReadDBPath(ASection: String): string;
     function ReadDatabase(ASection: String): string;
-    function ReadDatabasePathName(ASection: string): string;
     function ReadPassword(ASection: String): string;
     function ReadPort(ASection: String): string;
     function ReadUsername(ASection: String): string;
@@ -50,11 +49,6 @@ begin
    FIniFile
     .Path(Self.IniPath)
     .Name(INI_NAME);
-end;
-
-class function TMyDBConnConfigurationIni.DatabaseFolder: string;
-begin
-   Result := TMyVclLibrary.GetAppPath + FOLDER_DATABASE;
 end;
 
 destructor TMyDBConnConfigurationIni.Destroy;
@@ -104,9 +98,15 @@ begin
    Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_DATABASE).ReadIniFileStr(DEFAULT_DATABASE);
 end;
 
-function TMyDBConnConfigurationIni.ReadDatabasePathName(ASection: string): string;
+function TMyDBConnConfigurationIni.ReadDBPath(ASection: String): string;
+var
+  LDefault: string;
 begin
-   Result := Self.DatabaseFolder + Self.ReadDatabase(ASection);
+   LDefault := IncludeTrailingPathDelimiter(TMyVclLibrary.GetAppPath) + 'DATABASE\';
+   Result := FIniFile.Section(ASection).Identifier(IDENTIFIER_DB_PATH).ReadIniFileStr(LDefault);
+
+   if(Result.Trim.IsEmpty)then
+     Result := LDefault;
 end;
 
 function TMyDBConnConfigurationIni.ReadPassword(ASection: String): string;
@@ -162,7 +162,8 @@ begin
     .Section(ASection)
     .Identifier(IDENTIFIER_NAME).WriteIniFile(AName)
     .Identifier(IDENTIFIER_HOST).WriteIniFile(AHost)
-    .Identifier(IDENTIFIER_DATABASE).WriteIniFile(ADatabase)
+    .Identifier(IDENTIFIER_DB_PATH).WriteIniFile(ExtractFilePath(ADatabase))
+    .Identifier(IDENTIFIER_DATABASE).WriteIniFile(ExtractFileName(ADatabase))
     .Identifier(IDENTIFIER_PASSWORD).WriteIniFile(TMyLibrary.Encrypt(APassword))
     .Identifier(IDENTIFIER_PORT).WriteIniFile(APort)
     .Identifier(IDENTIFIER_USERNAME).WriteIniFile(AUsername);
