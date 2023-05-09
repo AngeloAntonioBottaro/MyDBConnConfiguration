@@ -55,7 +55,7 @@ implementation
 {$R *.dfm}
 
 uses
-  Utils.MyFormLibrary,
+  Common.Utils.MyFormLibrary,
   MyConnectionConfiguration.Consts,
   MyConnectionConfiguration.Ini,
   MyConnectionConfiguration.View.Lista;

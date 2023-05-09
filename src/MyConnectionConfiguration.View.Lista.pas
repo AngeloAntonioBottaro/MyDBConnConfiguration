@@ -61,8 +61,8 @@ implementation
 
 uses
   MyExceptions,
-  Utils.MyFormLibrary,
-  Utils.MyConsts,
+  Common.Utils.MyFormLibrary,
+  Common.Utils.MyConsts,
   MyConnectionConfiguration.View.Manutencao;
 
 procedure TViewLista.FormCreate(Sender: TObject);

@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  Utils.MyIniLibrary;
+  Common.Utils.MyIniLibrary;
 
 type
   TMyConnectionConfigurationIni = class
@@ -39,9 +39,9 @@ type
 implementation
 
 uses
-  Utils.MyLibrary,
-  Utils.Myconsts,
-  Utils.MyVCLLibrary,
+  Common.Utils.MyLibrary,
+  Common.Utils.Myconsts,
+  Common.Utils.MyVCLLibrary,
   MyConnectionConfiguration.Consts;
 
 constructor TMyConnectionConfigurationIni.Create;
