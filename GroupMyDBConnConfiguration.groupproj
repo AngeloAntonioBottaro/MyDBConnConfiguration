@@ -6,7 +6,7 @@
         <Projects Include="pkMyDBConnConfiguration.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Demo\MyConnectionConfigurationDemo.dproj">
+        <Projects Include="Demo\MyDBConnConfigurationDemo.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="pkMyDBConnConfiguration:Make">
         <MSBuild Projects="pkMyDBConnConfiguration.dproj" Targets="Make"/>
     </Target>
-    <Target Name="MyConnectionConfigurationDemo">
-        <MSBuild Projects="Demo\MyConnectionConfigurationDemo.dproj"/>
+    <Target Name="MyDBConnConfigurationDemo">
+        <MSBuild Projects="Demo\MyDBConnConfigurationDemo.dproj"/>
     </Target>
-    <Target Name="MyConnectionConfigurationDemo:Clean">
-        <MSBuild Projects="Demo\MyConnectionConfigurationDemo.dproj" Targets="Clean"/>
+    <Target Name="MyDBConnConfigurationDemo:Clean">
+        <MSBuild Projects="Demo\MyDBConnConfigurationDemo.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="MyConnectionConfigurationDemo:Make">
-        <MSBuild Projects="Demo\MyConnectionConfigurationDemo.dproj" Targets="Make"/>
+    <Target Name="MyDBConnConfigurationDemo:Make">
+        <MSBuild Projects="Demo\MyDBConnConfigurationDemo.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="pkMyDBConnConfiguration;MyConnectionConfigurationDemo"/>
+        <CallTarget Targets="pkMyDBConnConfiguration;MyDBConnConfigurationDemo"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="pkMyDBConnConfiguration:Clean;MyConnectionConfigurationDemo:Clean"/>
+        <CallTarget Targets="pkMyDBConnConfiguration:Clean;MyDBConnConfigurationDemo:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="pkMyDBConnConfiguration:Make;MyConnectionConfigurationDemo:Make"/>
+        <CallTarget Targets="pkMyDBConnConfiguration:Make;MyDBConnConfigurationDemo:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
