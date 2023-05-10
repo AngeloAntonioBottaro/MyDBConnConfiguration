@@ -28,7 +28,12 @@ package pkMyDBConnConfiguration;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  vcl,
+  vclimg,
+  dbrtl,
+  dsnap,
+  vcldb;
 
 contains
   MyDBConnConfiguration in 'src\MyDBConnConfiguration.pas',
@@ -39,3 +44,5 @@ contains
   MyDBConnConfiguration.Ini in 'src\MyDBConnConfiguration.Ini.pas';
 
 end.
+
+

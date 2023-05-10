@@ -59,8 +59,8 @@ implementation
 
 uses
   MyExceptions,
-  MyDBConnConfiguration.Consts,
-  Common.Utils.MyFormLibrary;
+  MyFormLibrary,
+  MyDBConnConfiguration.Consts;
 
 procedure TViewManutencao.FormCreate(Sender: TObject);
 begin

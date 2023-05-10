@@ -1,0 +1,54 @@
+{
+	"hash": "d41d8cd98f00b204e9800998ecf8427e",
+	"updated": "2023-05-10T12:44:31.1194665-03:00",
+	"installedModules": {
+		"github.com/angeloantoniobottaro/myexceptions": {
+			"name": "myexceptions",
+			"version": "v1.0.0",
+			"hash": "d2986f5f9e66939ae9e7aa22853c1801",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/angeloantoniobottaro/myformlibrary": {
+			"name": "myformlibrary",
+			"version": "",
+			"hash": "5202cfb92bbf429e2654d01de55bc9c6",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/angeloantoniobottaro/mymessage": {
+			"name": "mymessage",
+			"version": "v1.0.0",
+			"hash": "3ba8a3559f57c88e58e0f8bef39a9f7c",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/angeloantoniobottaro/mysearchcomponents": {
+			"name": "mysearchcomponents",
+			"version": "v1.0.0",
+			"hash": "a379f83a1e5f97247d72a6c8858f136a",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/angeloantoniobottaro/myutilslibrary": {
+			"name": "myutilslibrary",
+			"version": "v1.0.0",
+			"hash": "eb558673c085ef77b30c43138ed0adcc",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/angeloantoniobottaro/myvcllibrary": {
+			"name": "myvcllibrary",
+			"version": "",
+			"hash": "55733926aa9cdb4b780d3cc0fa599728",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
+}

@@ -61,7 +61,7 @@ implementation
 
 uses
   MyExceptions,
-  Common.Utils.MyFormLibrary,
+  MyFormLibrary,
   Common.Utils.MyConsts,
   MyDBConnConfiguration.View.Manutencao;
 

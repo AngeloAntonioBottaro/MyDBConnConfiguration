@@ -40,7 +40,7 @@ implementation
 uses
   Common.Utils.MyLibrary,
   Common.Utils.Myconsts,
-  Common.Utils.MyVCLLibrary,
+  MyVCLLibrary,
   MyDBConnConfiguration.Consts;
 
 constructor TMyDBConnConfigurationIni.Create;

@@ -1,0 +1,14 @@
+{
+	"name": "MyDBConnConfiguration",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./src",
+	"projects": [],
+	"dependencies": {
+		"github.com/angeloantoniobottaro/myexceptions": "^v1.0.0",
+		"github.com/angeloantoniobottaro/myformlibrary": ">0.0.0",
+		"github.com/angeloantoniobottaro/myutilslibrary": "^v1.0.0",
+		"github.com/angeloantoniobottaro/myvcllibrary": ">0.0.0"
+	}
+}
