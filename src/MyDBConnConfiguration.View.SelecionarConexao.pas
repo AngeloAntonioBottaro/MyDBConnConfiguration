@@ -128,9 +128,10 @@ begin
      end;
    finally
      LIniFile.Free;
-   end; 
+   end;
 
-   DBLookupComboBox1.ListFieldIndex := 0;  
+   TBT_Host.First;
+   DBLookupComboBox1.KeyValue := TBT_HostSection.AsString;
 end;
 
 procedure TViewSelecionarConexao.ClearClientDataSet;

@@ -57,7 +57,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <SanitizedProjectName>pkMyDBConnConfiguration</SanitizedProjectName>
-        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\myexceptions\src;modules\myformlibrary\src;modules\mymessage\Demo\src;modules\mymessage\src;modules\mysearchcomponents\Demo\src;modules\mysearchcomponents\Src;modules\myutilslibrary;modules\myvcllibrary;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(DCC_UnitSearchPath);modules\.dcp;modules\.dcu;modules;modules\myexceptions\src;modules\myformlibrary\src;modules\mymessage\Demo\src;modules\mymessage\src;modules\mysearchcomponents\Demo\src;modules\mysearchcomponents\Src;modules\myutilslibrary;modules\myvcllibrary</DCC_UnitSearchPath>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
