@@ -46,6 +46,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnExluirClick(Sender: TObject);
+    procedure DBGridDblClick(Sender: TObject);
   private
     FIniFile: TMyDBConnConfigurationIni;
     procedure ClearClientDataSet;
@@ -150,6 +151,11 @@ begin
    TBT_Host.EmptyDataSet;
    TBT_Host.Close;
    TBT_Host.Open;
+end;
+
+procedure TViewLista.DBGridDblClick(Sender: TObject);
+begin
+   btnAlterar.Click;
 end;
 
 procedure TViewLista.DBGridDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);

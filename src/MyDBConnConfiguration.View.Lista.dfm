@@ -96,6 +96,7 @@ object ViewLista: TViewLista
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
     OnDrawColumnCell = DBGridDrawColumnCell
+    OnDblClick = DBGridDblClick
     Columns = <
       item
         Expanded = False
